@@ -1,0 +1,28 @@
+h1 {
+    font-family: 'Helvetica Neue';
+    color: white;
+    background-color: #333;
+    padding: 1em;
+}
+
+p {
+    font-family: 'Times New Roman';
+    font-size: 18px;
+}
+
+img {
+    max-width: 300px;
+    border-radius: 15px;
+}
+
+li {
+    font-weight: bold;
+}
+
+.cat-item {
+    color: orange;
+}
+
+.text-section {
+    background-color: #ddd;
+}

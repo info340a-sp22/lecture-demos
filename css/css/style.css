@@ -1,0 +1,32 @@
+
+/* Q1 */
+/* .alert.success {
+  color: yellow;
+} */
+/* .alert .success {
+  color: yellow;
+} */
+/* .alert, .success {
+  color: yellow
+} */
+/* .alert--.success {
+  color: yellow
+} */
+
+
+
+/* Q2 */
+/* .first.second { color: green}; */
+/* div > p { color: green; } */
+/* div .second, #first { color: green; } */
+/* p:last-child { color: green; }  */
+
+
+
+/* Q3 */
+/* .blue { color: blue; } */
+/* p { color: gray; } */
+/* #red p.blue { color: red; } */
+/* #red .blue { color: magenta; } */
+/* .green p { color: lightgreen; } */
+/* div.green p.blue { color: cyan; } */

@@ -1,9 +1,78 @@
 
+a {
+  color: purple;
+}
+
+nav .current-tab a {
+  color: blue;
+}
+
+section.first {
+
+}
+
+p.first {
+
+}
+
+.alert {
+  color: rebeccapurple;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+h1.alert.error {
+  color: blue;
+}
+
+h1 .alert {
+  color: green;
+}
+
+.main > section a {
+  color: green;
+}
+
+nav a:hover, nav a:focus {
+  font-size: 2em;
+}
+
+nav a:first-child {
+  background-color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Q1 */
 /* .alert.success {
   color: yellow;
-} */
-/* .alert .success {
+}
+.alert .success {
   color: yellow;
 } */
 /* .alert, .success {
@@ -15,18 +84,39 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Q2 */
 /* .first.second { color: green}; */
 /* div > p { color: green; } */
 /* div .second, #first { color: green; } */
-/* p:last-child { color: green; }  */
+/* p:first-child {color: black; }
+p:last-child { color: green; }  */
 
 
 
 /* Q3 */
-/* .blue { color: blue; } */
-/* p { color: gray; } */
-/* #red p.blue { color: red; } */
-/* #red .blue { color: magenta; } */
-/* .green p { color: lightgreen; } */
-/* div.green p.blue { color: cyan; } */
+/* NOTE TO JOEL: FIX TO MATCH SLIDES */
+/* .green p { color: lightgreen; }
+
+p.blue { color: blue; }
+body div p { color: gray; }
+
+#red .blue { color: red; }
+.blue { color: magenta; }
+div.green p.blue { color: cyan; } */

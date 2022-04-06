@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+/* The section itself */
+.boxes {
+
+}
+
+/* Each div in the "boxes" section */
+.boxes div {
+  padding: .5em;
+  background-color: orange;
+  border: 2px solid rebeccapurple;
+  margin-bottom: .5em;
+}
+
+
+
+
+
+
+/* images section */
+.images {
+  margin: 1em 0;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.card img {
+  border-radius: 10px 10px 0 0;
+  width: 300px;
+}

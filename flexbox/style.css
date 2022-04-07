@@ -2,18 +2,99 @@
   box-sizing: border-box;
 }
 
+.list {
+  display: flex;
+  justify-content: center;
+}
+
+em {
+}
+
+.block {
+}
+
+
+ul {
+  font-size: 1em;
+}
+
+li {
+  display: inline-block;
+  /* width: 30%; */
+  /* font-family: 'Rub', 'Helvetica Cool', cursive; */
+  font-family: 'Rubik Moonrocks', cursive;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  /* background-color: lightgray; */
+  /* padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: 1em;
+  padding-right: 1em; */
+  /* border: 1px solid black;
+  border-bottom: 5px dashed black;
+  border-bottom-width: 6px; */
+  margin: 2em;
+
+}
+
+/* li:nth-child(1) {
+  font-size: 2rem;
+} */
+
+
+ul .green {
+  /* background-color: green; */
+}
+
+li {
+  /* background-color: lightblue; */
+}
+
+.green.red {
+  /* background-color: yellow; */
+}
+
+
+
+
+
+
 /* The section itself */
 .boxes {
-
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
 }
 
 /* Each div in the "boxes" section */
 .boxes div {
+  /* flex-grow: 1; */
+  /* flex-basis: 200px; */
   padding: .5em;
   background-color: orange;
   border: 2px solid rebeccapurple;
   margin-bottom: .5em;
 }
+
+.boxes .a {
+  /* flex-grow: 1; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

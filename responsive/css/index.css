@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+/* the image section itself */
+.images {
+  margin: 1em 0;
+}
+
+/* the text citation */
+.images p {
+
+}
+
+/* card in the private pool */
+.card {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 1em;
+}
+
+.card img {
+  border-radius: 10px 10px 0 0;
+  width: 300px;
+}

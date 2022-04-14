@@ -1,7 +1,18 @@
 /* Your css here! */
 
+/* a {
+    color: greenyellow;
+} */
 
 
 /* .boxes div {
     border: 1px solid rebeccapurple;
 } */
+
+
+.card {
+    border: 2px solid rebeccapurple;
+    /* margin-bottom: .5em; */
+    /* padding: 1em;
+    border-radius: 0; */
+}

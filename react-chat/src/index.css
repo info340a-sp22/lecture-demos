@@ -1,0 +1,14 @@
+.message img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: .5em;
+}
+
+.message-body p {
+    margin: 0;
+}
+
+.user-name {
+    font-weight: 700;
+}

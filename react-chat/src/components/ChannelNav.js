@@ -1,5 +1,5 @@
 
-export default function ChannelList(props) {
+export default function ChannelNav(props) {
 
   //props.channels is an array of strings
   const newLiArray = props.channels.map((channelNameString) => {

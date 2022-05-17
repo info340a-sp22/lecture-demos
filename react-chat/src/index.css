@@ -1,7 +1,4 @@
-html,
-body,
-#root,
-#root>div {
+html, body, #root, #root>div {
   height: 100%;
 }
 
@@ -52,4 +49,15 @@ body,
 /*** ComposeForm ***/
 textarea {
     resize:none
+}
+
+
+/*** Header ***/
+header img {
+  width:40px;
+  border-radius: 50%;
+}
+
+header button.user-icon {
+  padding: .25rem;
 }

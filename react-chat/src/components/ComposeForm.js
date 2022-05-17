@@ -12,10 +12,10 @@ export default function ComposeForm(props) {
     event.preventDefault();
     console.log("submitting form with", textValue);
 
+    //arguments: userId, userName, text, channel
     props.whatToDoWhenSubmitted("parrot", "Parrot", textValue, "general");
 
     setTextValue('');
-    //NEVER USE document.querySelector in React
   }
 
   return (
@@ -24,7 +24,7 @@ export default function ComposeForm(props) {
         <textarea className="form-control" rows="2" placeholder="Type a new message" 
                   value={textValue}
                   onChange={handleChange}                  
-                  ></textarea>
+                  />
         <button className="btn btn-secondary" type="submit">
           <span className="material-icons">send</span>
         </button>

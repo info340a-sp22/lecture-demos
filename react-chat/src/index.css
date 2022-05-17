@@ -61,3 +61,7 @@ header img {
 header button.user-icon {
   padding: .25rem;
 }
+
+.highlighted {
+  border: 3px solid greenyellow;
+}

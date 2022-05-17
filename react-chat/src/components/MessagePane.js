@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 
 export default function MessagePane(props) {
+  // console.log("rendering MessagePane");
+
   const currentChannel = props.channel 
   const messagesArray = props.messagesArray; 
   // console.log("rendering MessagePane") //debugging  
@@ -36,7 +38,7 @@ export default function MessagePane(props) {
 }
 
 
-function Message(props) {
+export function Message(props) {
   const { userName, userImg, text } = props.messageData; //destructuring!
 
   const [isLiked, setIsLiked] = useState(false);

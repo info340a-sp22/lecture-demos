@@ -7,6 +7,12 @@ html, body, #root, #root>div {
   top: 4px;
 }
 
+/*** Channel List ***/
+.channel-list a {
+  color: white;
+}
+
+
 /*** Message Pane ***/
 
 .chat-pane {
@@ -64,4 +70,18 @@ header button.user-icon {
 
 .highlighted {
   border: 3px solid greenyellow;
+}
+
+.bg-primary .nav-link {
+  color: white;
+}
+
+.bg-primary .nav-pills .nav-link.active {
+  color: #0d6efd;
+  background-color: white;
+}
+
+header .nav-item {
+  display: flex;
+  align-items:center;
 }

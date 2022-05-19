@@ -6,7 +6,7 @@ export function WelcomePage(props) {
       <div className="container card-body">
         <h2>Welcome to React Messenger!</h2>
         <p>The latest and greatest messaging app</p>
-        <p><a href="/signin">Sign in to get started!</a></p>
+        <p><a href="/app/signin">Sign in to get started!</a></p>
       </div>
     </div>
   );

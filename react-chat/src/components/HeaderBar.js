@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Link } from 'react-router-dom';
 
 
 //define the HeaderBar component
@@ -13,15 +14,18 @@ export default function HeaderBar(props) {
       {/* links go here */}
       <ul className="nav nav-pills">
         <li className="nav-item">
-          <a className="nav-link" href="/">Home</a>
+          <Link className="nav-link" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/about">About</a>
+          <Link className="nav-link" to="chat/general">Chat</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/signin">
-            <img src={'img/' + currentUser.userName + '.png'} alt={currentUser.userName + " avatar"} />
-          </a>
+          <Link className="nav-link" to="about">About</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="signin">
+            <img src={'/img/' + currentUser.userName + '.png'} alt={currentUser.userName + " avatar"} />
+          </Link>
         </li>
       </ul>
     </header>

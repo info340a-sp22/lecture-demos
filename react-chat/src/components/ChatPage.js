@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ChannelNav from './ChannelNav';
 import MessagePane from './MessagePane';
@@ -10,20 +11,22 @@ const CHANNEL_LIST = ['general', 'random', 'social', 'birbs', 'channel-5']
 
 export default function ChatPage(props) {
   const currentUser = props.currentUser;
-
   const [messagesArray, setMessagesArray] = useState(SAMPLE_CHAT_LOG);
 
-  const currentChannel = 'general';
+  const params = useParams();
+  console.log("params:", params);
+
+  const currentChannel = params.channelParam;
 
   //add a new message
-  const addMessage = (userId, userName, messageText, channel) => {
+  const addMessage = (userId, userName, messageText) => {
     const newMessage = {
       userId: userId,
       userName: userName,
       userImg: "/img/"+userName+".png",
       text: messageText,
       timestamp: Date.now(),
-      channel: channel
+      channel: currentChannel
     }
 
     const updatedMessagesArray = [...messagesArray, newMessage];

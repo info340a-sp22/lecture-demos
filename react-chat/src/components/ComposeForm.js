@@ -29,7 +29,7 @@ export default function ComposeForm(props) {
     <form className="my-2" onSubmit={handleSubmit}>
       <div className="input-group">
         {currentUser.userName &&
-          <img src={'img/' + currentUser.userName + '.png'} alt={currentUser.userName + " avatar"} />
+          <img src={'/img/' + currentUser.userName + '.png'} alt={currentUser.userName + " avatar"} />
         }
         <textarea className="form-control" rows="2" placeholder="Type a new message" 
                   value={textValue}

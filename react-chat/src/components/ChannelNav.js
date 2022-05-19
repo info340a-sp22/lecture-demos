@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 
 export default function ChannelNav(props) {
 
@@ -5,7 +6,7 @@ export default function ChannelNav(props) {
   const newLiArray = props.channels.map((channelNameString) => {
     const elem = (
       <li className="list-item" key={channelNameString}>
-        <a href="">#{channelNameString}</a>
+        <Link to={"/app/chat/"+channelNameString}>#{channelNameString}</Link>
       </li>
       );
     return elem;

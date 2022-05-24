@@ -6,6 +6,11 @@ import './index.css';
 
 import App from './components/App.js';
 
+
+
+
+
+
 //render the root
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);

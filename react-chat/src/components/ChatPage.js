@@ -14,8 +14,6 @@ export default function ChatPage(props) {
   const [messagesArray, setMessagesArray] = useState(SAMPLE_CHAT_LOG);
 
   const params = useParams();
-  console.log("params:", params);
-
   const currentChannel = params.channelParam;
 
   //add a new message

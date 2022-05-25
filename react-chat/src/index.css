@@ -12,6 +12,15 @@ html, body, #root, #root>div {
   color: white;
 }
 
+.bg-secondary .nav-link {
+  color: white;
+}
+
+.bg-secondary .nav-pills .nav-link.active {
+  color: rgb(108, 117, 125);
+  background-color: white;
+}
+
 
 /*** Message Pane ***/
 

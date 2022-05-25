@@ -1,33 +1,41 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import HeaderBar from './HeaderBar';
 import ChatPage from './ChatPage';
 import SignInPage from './SignInPage';
 import * as Static from './StaticPages';
 
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
 
 
 function App(props) {
   const initialUser = {userId:null, userName:null}
   const [currentUser, setCurrentUser] = useState(initialUser);
-  console.log("rendering App with", currentUser);
+  const navigateTo = useNavigate(); //for redirecting
+  //console.log("rendering App with", currentUser);
+
+  //effect to run when the component first loads
+  useEffect(() => {
+    //log in a default user
+    loginUser({userId:"penguin", userName:"Penguin"})
+  }, []) //array is list of variables that will cause this to rerun if changed
 
   const loginUser = (userObject) => {
     //can do more checking here if we want
     setCurrentUser(userObject);
+    navigateTo('/chat/general'); //go to chat "after" we log in!
   }
 
   return (
     <div className="container-fluid d-flex flex-column">
       <Routes>
-        <Route path="app" element={<AppLayout currentUser={currentUser} loginUser={loginUser} />}>
+        <Route element={<AppLayout currentUser={currentUser} loginUser={loginUser} />}>
           {/* protected routes */}
-          {/* <Route element={<RequireAuth currentUser={currentUser} />}> */}
+          <Route element={<ProtectedPage currentUser={currentUser} />}>
             <Route path="chat/:channelParam" element={
               <ChatPage currentUser={currentUser} />
             }/>
-          {/* </Route> */}
+          </Route>
 
           {/* public routes */}
           <Route path="signin" element={
@@ -57,10 +65,10 @@ function AppLayout({currentUser, loginUser}) {
   )
 }
 
-function RequireAuth(props) {
+function ProtectedPage(props) {
   //...determine if user is logged in
-  if(!props.currentUser.userId) { //if no user, say so
-    return <p>Access denied!</p>
+  if(!props.currentUser.userId) { //if no user, send to sign in
+    return <Navigate to="/signin" />
   }
   else { //otherwise, show the child route content
     return <Outlet />

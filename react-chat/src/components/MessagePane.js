@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 
 export default function MessagePane(props) {
-  // console.log("rendering MessagePane");
-
   const currentChannel = props.channel 
   const messagesArray = props.messagesArray; 
   // console.log("rendering MessagePane") //debugging  

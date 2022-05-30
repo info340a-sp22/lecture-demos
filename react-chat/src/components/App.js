@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import HeaderBar from './HeaderBar';
 import ChatPage from './ChatPage';
 import SignInPage from './SignInPage';
+import ProfilePage from './ProfilePage';
 import * as Static from './StaticPages';
 
 import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
@@ -15,10 +16,10 @@ function App(props) {
   //console.log("rendering App with", currentUser);
 
   //effect to run when the component first loads
-  useEffect(() => {
-    //log in a default user
-    loginUser({userId:"penguin", userName:"Penguin"})
-  }, []) //array is list of variables that will cause this to rerun if changed
+  // useEffect(() => {
+  //   //log in a default user
+  //   loginUser({userId:"penguin", userName:"Penguin"})
+  // }, []) //array is list of variables that will cause this to rerun if changed
 
   const loginUser = (userObject) => {
     //can do more checking here if we want
@@ -35,6 +36,7 @@ function App(props) {
             <Route path="chat/:channelParam" element={
               <ChatPage currentUser={currentUser} />
             }/>
+            <Route path="profile" element={<ProfilePage currentUser={currentUser} />}/>
           </Route>
 
           {/* public routes */}

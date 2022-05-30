@@ -94,3 +94,10 @@ header .nav-item {
   display: flex;
   align-items:center;
 }
+
+/*** Profile ***/
+.image-upload-form img {
+  display: block;
+  width: 250px;
+  height: 250px;
+}

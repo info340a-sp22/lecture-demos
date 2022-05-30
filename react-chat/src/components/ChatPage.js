@@ -23,34 +23,14 @@ export default function ChatPage(props) {
 
     //hook up listener for when a value changes
     const db = getDatabase(); //url for the database, not the data itself
-    const msgRef = ref(db, "exampleMessage"); //refers to "message" location in the database
-
-    //onValue() returns how to turn it back off
-    console.log("loading the listener")
-    const exampleEffFunction = onValue(msgRef, (snapshot) => {
-      const newVal = snapshot.val();
-      // console.log("value changed to", newVal);
-
-      // if(newVal != null) {
-      //   setMessagesArray([newVal])
-      // }
-
-    })    
-
     const allMsgRef = ref(db, "allMessages");
-    onValue(allMsgRef, (snapshot) => {
+    const offFunction = onValue(allMsgRef, (snapshot) => {
       const newValObj = snapshot.val();
-      console.log(newValObj);
-
       const keys = Object.keys(newValObj);
-      console.log(keys);
       const newObjArray = keys.map((keyString) => {
         return newValObj[keyString]
-      })
-      console.log(newObjArray);
-        
+      })       
       setMessagesArray(newObjArray)
-
     })
 
 
@@ -58,10 +38,8 @@ export default function ChatPage(props) {
     //what to do when component unmounts (is removed, not shown)
     const cleanup = function() {
       //turn out the lights
-      console.log("leaving chatpage")
       //need to remove the value listener to clean up
-      exampleEffFunction();
-
+      offFunction();
     }
     return cleanup; //tell people to do that when it leaves
   }, [])
@@ -69,7 +47,6 @@ export default function ChatPage(props) {
 
   //add a new message
   const addMessage = (userId, userName, messageText) => {
-
     const newMessage = {
       userId: userId,
       userName: userName,
@@ -79,22 +56,13 @@ export default function ChatPage(props) {
       channel: currentChannel
     }
 
-
     //reference Firebase
     const db = getDatabase(); //url for the database, not the data itself
     const allMsgRef = ref(db, "allMessages"); //refers to "message" location in the database
     const profLastNameRef = ref(db, "prof/lastName");
 
     firebasePush(allMsgRef, newMessage);
-
-
-
-
-
-    // const updatedMessagesArray = [...messagesArray, newMessage];
-    // setMessagesArray(updatedMessagesArray);
   }
-
 
   return (
     <div className="row flex-grow-1">

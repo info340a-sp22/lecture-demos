@@ -4,7 +4,7 @@ export default function ComposeForm(props) {
   const [textValue, setTextValue] = useState("");
 
   const currentUser = props.currentUser;
-
+  let avatarUrl = props.currentUser.photoURL || '/img/null.png'
 
   const handleChange = (event) => {
     const typedValue = event.target.value;
@@ -16,7 +16,7 @@ export default function ComposeForm(props) {
     console.log("submitting form with", textValue);
 
     //arguments: userId, userName, text, channel
-    props.whatToDoWhenSubmitted(currentUser.userId, currentUser.userName, textValue, "general");
+    props.whatToDoWhenSubmitted(currentUser.userId, currentUser.userName, avatarUrl, textValue, "general");
 
     setTextValue('');
   }
@@ -29,7 +29,7 @@ export default function ComposeForm(props) {
     <form className="my-2" onSubmit={handleSubmit}>
       <div className="input-group">
         {currentUser.userName &&
-          <img src={'/img/' + currentUser.userName + '.png'} alt={currentUser.userName + " avatar"} />
+          <img src={avatarUrl} alt={currentUser.userName + " avatar"} />
         }
         <textarea className="form-control" rows="2" placeholder="Type a new message" 
                   value={textValue}

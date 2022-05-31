@@ -46,11 +46,11 @@ export default function ChatPage(props) {
 
 
   //add a new message
-  const addMessage = (userId, userName, messageText) => {
+  const addMessage = (userId, userName, photoUrl, messageText) => {
     const newMessage = {
       userId: userId,
       userName: userName,
-      userImg: "/img/"+userName+".png",
+      userImg: photoUrl,
       text: messageText,
       timestamp: Date.now(),
       channel: currentChannel

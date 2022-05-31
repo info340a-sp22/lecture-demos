@@ -6,20 +6,38 @@ import SignInPage from './SignInPage';
 import ProfilePage from './ProfilePage';
 import * as Static from './StaticPages';
 
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
 
 
 function App(props) {
-  const initialUser = {userId:null, userName:null}
-  const [currentUser, setCurrentUser] = useState(initialUser);
+  const nullUser = {userId:null, userName:null}
+  const [currentUser, setCurrentUser] = useState(nullUser);
   const navigateTo = useNavigate(); //for redirecting
   //console.log("rendering App with", currentUser);
 
   //effect to run when the component first loads
-  // useEffect(() => {
-  //   //log in a default user
-  //   loginUser({userId:"penguin", userName:"Penguin"})
-  // }, []) //array is list of variables that will cause this to rerun if changed
+  useEffect(() => {
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (firebaseUser) => {
+      if(firebaseUser) { //is defined, so "logged in"
+        console.log("authentication state changed");
+        console.log(firebaseUser);
+        //add in the keys for the terms we want to use
+        firebaseUser.userId = firebaseUser.uid;
+        firebaseUser.userName = firebaseUser.displayName;
+        setCurrentUser(firebaseUser);  
+      }
+      else { //not defined, so logged out
+        setCurrentUser(nullUser);
+      }
+    });
+
+
+
+  }, []) //array is list of variables that will cause this to rerun if changed
 
   const loginUser = (userObject) => {
     //can do more checking here if we want
@@ -69,7 +87,7 @@ function AppLayout({currentUser, loginUser}) {
 
 function ProtectedPage(props) {
   //...determine if user is logged in
-  if(!props.currentUser.userId) { //if no user, send to sign in
+  if(!props.currentUser.uid) { //if no user, send to sign in
     return <Navigate to="/signin" />
   }
   else { //otherwise, show the child route content

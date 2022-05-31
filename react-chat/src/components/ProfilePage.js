@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 
+import { getDatabase, ref, set as firebaseSet } from 'firebase/database';
+
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { updateProfile } from 'firebase/auth';
+
+
 export default function ProfilePage(props) {
   //convenience
   const displayName = props.currentUser ? props.currentUser.userName : null;
 
   const [imageFile, setImageFile] = useState(undefined)
-  let initialURL = '/img/null.png'
+  let initialURL = props.currentUser.photoURL || '/img/null.png'
   if(props.user && props.currentUser.photoURL) {
     initialURL = props.currentUser.photoURL
   }
   const [imageUrl, setImageUrl] = useState(initialURL)
+
+  const [favoriteFood, setFavoriteFood] = useState('');
 
   //image uploading!
   const handleChange = (event) => {
@@ -20,8 +28,32 @@ export default function ProfilePage(props) {
     }
   }
 
-  const handleImageUpload = (event) => {
+  const handleImageUpload = async (event) => {
     console.log("Uploading", imageFile);
+
+    const storage = getStorage();
+    const imageRef = storageRef(storage, "userImages/"+props.currentUser.uid+".png");
+    await uploadBytes(imageRef, imageFile)
+    const imageUrlOnFirebase = await getDownloadURL(imageRef)
+
+    //save the storage image in the profile
+    updateProfile(props.currentUser, { photoURL: imageUrlOnFirebase })
+
+    //save the storage image in the rtdb
+    const db = getDatabase();
+    const avatarRef = ref(db, "userData/"+props.currentUser.uid+"/avatarImage")
+    firebaseSet(avatarRef, imageUrlOnFirebase);
+
+  }
+
+  const handleFoodChange = (event) => {
+    setFavoriteFood(event.target.value);
+  }
+  const handleFoodClick = (event) => {
+    //update database
+    const db = getDatabase();
+    const foodRef = ref(db, "userData/"+props.currentUser.uid+"/favoriteFood")
+    firebaseSet(foodRef, favoriteFood);
   }
 
   return (
@@ -36,6 +68,13 @@ export default function ProfilePage(props) {
         <button className="btn btn-sm btn-success" onClick={handleImageUpload}>Save to Profile</button>
         <input type="file" name="image" id="imageUploadInput" className="d-none" onChange={handleChange}/>
       </div>
+
+      <div>
+        <label htmlFor="foodInput">Food</label>
+        <input id="foodInput" value={favoriteFood} onChange={handleFoodChange} />
+        <button onClick={handleFoodClick}>Save Food</button>
+      </div>
+
     </div>
   )
 }

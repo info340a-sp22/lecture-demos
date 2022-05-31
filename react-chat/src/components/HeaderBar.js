@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { NavLink, Link } from 'react-router-dom';
 
+import { getAuth, signOut} from 'firebase/auth';
 
 //define the HeaderBar component
 export default function HeaderBar(props) {
@@ -9,6 +10,7 @@ export default function HeaderBar(props) {
 
   const handleSignOut = (event) => {
     console.log("signing out");
+    signOut(getAuth());
   }  
 
   
